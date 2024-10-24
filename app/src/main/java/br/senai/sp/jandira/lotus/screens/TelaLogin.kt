@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.lotus.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,10 +27,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import br.senai.sp.jandira.lotus.R
 
 @Composable
 fun Login(controleNavegacao: NavHostController) {
@@ -50,7 +55,23 @@ fun Login(controleNavegacao: NavHostController) {
 
         ) {
 
-            Text(text = "Login Lotus")
+            Text(text = "Bem vindo-a",
+                color = Color(0xff7C7C7C),
+                fontSize = 16.sp,)
+            Text(text = "Lótus.",
+                color = Color(0xffFFAEBF),
+                fontSize = 34.sp,
+                fontWeight = FontWeight.Bold,)
+
+            Surface(modifier = Modifier
+                .width(260.dp)
+                .height(260.dp),
+
+            )
+            {
+                Image(painter = painterResource(id = R.drawable.cegonha), contentDescription = "Cegonha")
+
+            }
 
             OutlinedTextField(
                 value = emailState.value,
@@ -70,8 +91,10 @@ fun Login(controleNavegacao: NavHostController) {
                     .colors(
                         focusedBorderColor = Color(0xffFFAEBF),
                         unfocusedBorderColor = Color(0xffFFAEBF),
+                        focusedPlaceholderColor = Color(0x00FFAEBF),
+                        focusedContainerColor =  Color(0x2FFFAEBF),
                     ),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(36.dp),
                 maxLines = 1
             )
 
@@ -94,23 +117,16 @@ fun Login(controleNavegacao: NavHostController) {
                     .colors(
                         focusedBorderColor = Color(0xffFFAEBF),
                         unfocusedBorderColor = Color(0xffFFAEBF),
+                        focusedContainerColor =  Color(0x2FFFAEBF),
                     ),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(36.dp),
                 maxLines = 1
             )
 
-            Spacer(modifier = Modifier.height(14.dp))
+            Spacer(modifier = Modifier.height(34.dp))
 
 
             Button(onClick = {
-
-//                if (emailState.value == "julia" && passwordState.value == "12345"){
-//
-//                    controleDeNavegacao.navigate("home")
-//
-//                }else{
-//                    mensagemErroState.value = "Usuario ou senha incorretos"
-//                }
 
             },
                 shape = RoundedCornerShape(66.dp),
@@ -118,25 +134,25 @@ fun Login(controleNavegacao: NavHostController) {
             ) {
                 Row (
                     modifier = Modifier
-                        .width(70.dp)
+                        .width(80.dp)
                         .height(28.dp)
                     ,
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceAround
                 ){
-                    Text(text = "Entrar")
-                    Icon(imageVector = Icons.Default.KeyboardArrowRight,
-                        contentDescription = "seta direita",
-                        tint = Color(0xFFFFFFFF),
+                    Text(text = "Entrar",
+                        fontSize = 18.sp
                     )
+                    
                 }
             }
 
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            Text(text = "Ir para o Registro", Modifier.clickable { controleNavegacao.navigate("register")})
-
+            Text(text = "Criar uma conta",
+                Modifier.clickable { controleNavegacao.navigate("register")})
+            
         }
 
     }

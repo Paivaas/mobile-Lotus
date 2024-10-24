@@ -13,6 +13,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.senai.sp.jandira.lotus.screens.Login
 import br.senai.sp.jandira.lotus.screens.Register
+import br.senai.sp.jandira.lotus.screens.RegisterDoula
+import br.senai.sp.jandira.lotus.screens.RegisterGestante
 import br.senai.sp.jandira.lotus.ui.theme.LotusTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,6 +35,8 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable(route = "login") { Login(controleNavegacao) }
                         composable(route = "register") { Register(controleNavegacao) }
+                        composable(route = "registerdoula") { RegisterDoula(controleNavegacao) }
+                        composable(route = "registergestante") { RegisterGestante(controleNavegacao) }
                     }
                 }
             }

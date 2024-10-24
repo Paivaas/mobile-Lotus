@@ -1,4 +1,5 @@
 package br.senai.sp.jandira.lotus.screens
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,254 +25,73 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import br.senai.sp.jandira.lotus.R
 
 @Composable
 fun Register(controleNavegacao: NavHostController) {
 
-    Surface(onClick = { /*TODO*/ }) {
+    Surface() {
 
-        Surface(onClick = { /*TODO*/ }) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxSize()
 
-            var nomeState = remember {
-                mutableStateOf("")
-            }
-            var sobrenomeState = remember {
-                mutableStateOf("")
-            }
-            var idadeState = remember {
-                mutableStateOf("")
-            }
-            var pesoState = remember {
-                mutableStateOf("")
-            }
-            var alturaState = remember {
-                mutableStateOf("")
-            }
-            var emailState = remember {
-                mutableStateOf("")
-            }
-            var passwordState = remember {
-                mutableStateOf("")
-            }
+        ){
+            Text(text = "Crie sua conta na",
+                color = Color(0xff7C7C7C),
+                fontSize = 16.sp,)
+            Text(text = "Lótus.",
+                color = Color(0xffFFAEBF),
+                fontSize = 34.sp,
+                fontWeight = FontWeight.Bold,)
+            Surface(modifier = Modifier
+                .width(260.dp)
+                .height(260.dp),
 
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
-                modifier = Modifier.fillMaxSize()
-
-            ) {
-
-                Text(text = "Register Lotus")
-
-                OutlinedTextField(
-                    value = nomeState.value,
-                    onValueChange = {
-                        emailState.value = it
-                    },
-                    label = {
-                        Text(text = "Nome")
-                    },
-                    leadingIcon = {
-                        Icon(imageVector = Icons.Default.Person,
-                            contentDescription = "",
-                            tint = Color(0xffFFAEBF),
-                        )
-                    },
-                    colors = OutlinedTextFieldDefaults
-                        .colors(
-                            focusedBorderColor = Color(0xffFFAEBF),
-                            unfocusedBorderColor = Color(0xffFFAEBF),
-                        ),
-                    shape = RoundedCornerShape(16.dp),
-                    maxLines = 1
                 )
+            {
+                Image(painter = painterResource(id = R.drawable.berco), contentDescription = "Cegonha")
 
+            }
 
-                OutlinedTextField(
-                    value = sobrenomeState.value,
-                    onValueChange = {
-                        emailState.value = it
-                    },
-                    label = {
-                        Text(text = "Sobrenome")
-                    },
-                    leadingIcon = {
-                        Icon(imageVector = Icons.Default.Person,
-                            contentDescription = "",
-                            tint = Color(0xffFFAEBF),
-                        )
-                    },
-                    colors = OutlinedTextFieldDefaults
-                        .colors(
-                            focusedBorderColor = Color(0xffFFAEBF),
-                            unfocusedBorderColor = Color(0xffFFAEBF),
-                        ),
-                    shape = RoundedCornerShape(16.dp),
-                    maxLines = 1
-                )
+            Spacer(modifier = Modifier.height(14.dp))
+            Text(text = "Como gostaria de prosseguir o cadastro?",
+                    color = Color(0xff7C7C7C),)
+            Spacer(modifier = Modifier.height(14.dp))
 
-                OutlinedTextField(
-                    value = idadeState.value,
-                    onValueChange = {
-                        emailState.value = it
-                    },
-                    label = {
-                        Text(text = "idade")
-                    },
-                    leadingIcon = {
-                        Icon(imageVector = Icons.Default.Person,
-                            contentDescription = "",
-                            tint = Color(0xffFFAEBF),
-                        )
-                    },
-                    colors = OutlinedTextFieldDefaults
-                        .colors(
-                            focusedBorderColor = Color(0xffFFAEBF),
-                            unfocusedBorderColor = Color(0xffFFAEBF),
-                        ),
-                    shape = RoundedCornerShape(16.dp),
-                    maxLines = 1
-                )
+            Row() {
+                Button(onClick = { controleNavegacao.navigate("registerGestante") },
+                    Modifier
+                        .height(120.dp)
+                        .width(120.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color((0xffFFAEBF)))) {
+                    Text(text = "Gestante")
 
-                OutlinedTextField(
-                    value = pesoState.value,
-                    onValueChange = {
-                        emailState.value = it
-                    },
-                    label = {
-                        Text(text = "peso")
-                    },
-                    leadingIcon = {
-                        Icon(imageVector = Icons.Default.Person,
-                            contentDescription = "",
-                            tint = Color(0xffFFAEBF),
-                        )
-                    },
-                    colors = OutlinedTextFieldDefaults
-                        .colors(
-                            focusedBorderColor = Color(0xffFFAEBF),
-                            unfocusedBorderColor = Color(0xffFFAEBF),
-                        ),
-                    shape = RoundedCornerShape(16.dp),
-                    maxLines = 1
-                )
-
-                OutlinedTextField(
-                    value = alturaState.value,
-                    onValueChange = {
-                        emailState.value = it
-                    },
-                    label = {
-                        Text(text = "altura")
-                    },
-                    leadingIcon = {
-                        Icon(imageVector = Icons.Default.Person,
-                            contentDescription = "",
-                            tint = Color(0xffFFAEBF),
-                        )
-                    },
-                    colors = OutlinedTextFieldDefaults
-                        .colors(
-                            focusedBorderColor = Color(0xffFFAEBF),
-                            unfocusedBorderColor = Color(0xffFFAEBF),
-                        ),
-                    shape = RoundedCornerShape(16.dp),
-                    maxLines = 1
-                )
-
-                OutlinedTextField(
-                    value = emailState.value,
-                    onValueChange = {
-                        emailState.value = it
-                    },
-                    label = {
-                        Text(text = "email")
-                    },
-                    leadingIcon = {
-                        Icon(imageVector = Icons.Default.Person,
-                            contentDescription = "",
-                            tint = Color(0xffFFAEBF),
-                        )
-                    },
-                    colors = OutlinedTextFieldDefaults
-                        .colors(
-                            focusedBorderColor = Color(0xffFFAEBF),
-                            unfocusedBorderColor = Color(0xffFFAEBF),
-                        ),
-                    shape = RoundedCornerShape(16.dp),
-                    maxLines = 1
-                )
-
-                OutlinedTextField(
-                    value = passwordState.value,
-                    onValueChange = {
-                        emailState.value = it
-                    },
-                    label = {
-                        Text(text = "senha")
-                    },
-                    leadingIcon = {
-                        Icon(imageVector = Icons.Default.Person,
-                            contentDescription = "",
-                            tint = Color(0xffFFAEBF),
-                        )
-                    },
-                    colors = OutlinedTextFieldDefaults
-                        .colors(
-                            focusedBorderColor = Color(0xffFFAEBF),
-                            unfocusedBorderColor = Color(0xffFFAEBF),
-                        ),
-                    shape = RoundedCornerShape(16.dp),
-                    maxLines = 1
-                )
-
-
-                Spacer(modifier = Modifier.height(14.dp))
-
-
-                Button(onClick = {
-
-//                if (emailState.value == "julia" && passwordState.value == "12345"){
-//
-//                    controleDeNavegacao.navigate("home")
-//
-//                }else{
-//                    mensagemErroState.value = "Usuario ou senha incorretos"
-//                }
-
-                },
-                    shape = RoundedCornerShape(66.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color((0xffFFAEBF)))
-                ) {
-                    Row (
-                        modifier = Modifier
-                            .width(70.dp)
-                            .height(28.dp)
-                        ,
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.SpaceAround
-                    ){
-                        Text(text = "Entrar")
-                        Icon(imageVector = Icons.Default.KeyboardArrowRight,
-                            contentDescription = "seta direita",
-                            tint = Color(0xFFFFFFFF),
-                        )
-                    }
                 }
+                Spacer(modifier = Modifier.width(28.dp))
+                Button(onClick = { controleNavegacao.navigate("registerDoula") },
+                    Modifier
+                        .height(120.dp)
+                        .width(120.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color((0xffFEB491)))) {
+                    Text(text = "Doula")
 
-                Spacer(modifier = Modifier.height(12.dp))
-
-                Text(text = "Ir para o  Login", Modifier.clickable { controleNavegacao.navigate("login")})
-
-
+                }
             }
-
         }
-        
+
+
+
     }
 
 }
