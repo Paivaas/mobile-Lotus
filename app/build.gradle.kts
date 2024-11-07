@@ -67,8 +67,12 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    //navigation
+    //Navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
     //Coisinha de colocar a data bonitinha
     implementation("network.chaintech:kmp-date-time-picker:1.0.6")
+    //Retrofit implementation
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
 }

@@ -18,6 +18,7 @@ import br.senai.sp.jandira.lotus.screens.doula.PerfilDoula
 import br.senai.sp.jandira.lotus.screens.doula.RegisterDoula
 import br.senai.sp.jandira.lotus.screens.gestante.AgendaGestante
 import br.senai.sp.jandira.lotus.screens.gestante.CheckListGestante
+import br.senai.sp.jandira.lotus.screens.gestante.Conteudos
 import br.senai.sp.jandira.lotus.screens.gestante.HomeGestante
 import br.senai.sp.jandira.lotus.screens.gestante.HomeGestantePreview
 import br.senai.sp.jandira.lotus.screens.gestante.PerfilGestante
@@ -38,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     val controleNavegacao = rememberNavController()
                     NavHost(
                         navController = controleNavegacao,
-                        startDestination = "Login"
+                        startDestination = "conteudos"
                     ) {
                         composable(route = "login") { Login(controleNavegacao) }
                         composable(route = "register") { Register(controleNavegacao) }
@@ -54,6 +55,7 @@ class MainActivity : ComponentActivity() {
                         composable(route = "homegestante") { HomeGestante(controleNavegacao) }
                         composable(route = "agendagestante") { AgendaGestante(controleNavegacao) }
                         composable(route = "checklistgestante") { CheckListGestante(controleNavegacao) }
+                        composable(route = "conteudos") { Conteudos(controleNavegacao) }
                     }
                 }
             }
