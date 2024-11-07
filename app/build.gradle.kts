@@ -69,4 +69,6 @@ dependencies {
 
     //navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
+    //Coisinha de colocar a data bonitinha
+    implementation("network.chaintech:kmp-date-time-picker:1.0.6")
 }

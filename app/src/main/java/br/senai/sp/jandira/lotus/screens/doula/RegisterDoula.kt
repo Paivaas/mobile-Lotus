@@ -1,7 +1,6 @@
-package br.senai.sp.jandira.lotus.screens
+package br.senai.sp.jandira.lotus.screens.doula
 
 import android.widget.Toast
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,14 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -29,6 +21,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -36,22 +29,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import br.senai.sp.jandira.lotus.R
-import kotlin.coroutines.coroutineContext
-
 
 
 @Composable
-fun RegisterGestante(controleNavegacao: NavHostController) {
+fun ShowToast() {
+    val context = LocalContext.current
+    val text = "Cadastro concluido!"
+    val duration = Toast.LENGTH_SHORT
+
+    Toast.makeText(context, text, duration).show()
+}
 
 
+@Composable
+fun RegisterDoula(controleNavegacao: NavHostController) {
+
+    val context = LocalContext.current
 
     Surface(onClick = { /*TODO*/ }) {
 
@@ -72,13 +71,6 @@ fun RegisterGestante(controleNavegacao: NavHostController) {
             var nascimentoState = remember {
                 mutableStateOf("")
             }
-            var nomeBebeState = remember {
-                mutableStateOf("")
-            }
-            var semanasState = remember {
-                mutableStateOf("")
-            }
-
 
 
             Column(
@@ -105,7 +97,6 @@ fun RegisterGestante(controleNavegacao: NavHostController) {
                     )
 
                 }
-
                 Text(text = "Crie sua conta na",
                     color = Color(0xff7C7C7C),
                     fontSize = 16.sp,)
@@ -188,7 +179,7 @@ fun RegisterGestante(controleNavegacao: NavHostController) {
                         profissaoState.value = it
                     },
                     label = {
-                        Text(text = "Profissão")
+                        Text(text = "A quanto tempo é Doula")
                     },
                     leadingIcon = {
                         Icon(imageVector = Icons.Default.Create,
@@ -205,75 +196,25 @@ fun RegisterGestante(controleNavegacao: NavHostController) {
                     maxLines = 1
                 )
 
-                OutlinedTextField(
+                TextField(
                     value = nascimentoState.value,
                     onValueChange = {
                         nascimentoState.value = it
                     },
                     label = {
-                        Text(text = "Data de Nascimento")
+                        Text(text = "Faça uma descrição sobre você para que outras mulheres possam te conhecer melhor! Conte sobre sua jornada,  vida e  carreira. ♡\n" +
+                                "\n" +
+                                "Essa descrição ficará visivel no seu perfil.")
                     },
-                    leadingIcon = {
-                        Icon(imageVector = Icons.Default.DateRange,
-                            contentDescription = "",
-                            tint = Color(0xffFFAEBF),
-                        )
-                    },
-                    colors = OutlinedTextFieldDefaults
-                        .colors(
-                            focusedBorderColor = Color(0xffFFAEBF),
-                            unfocusedBorderColor = Color(0xffFFAEBF),
-                        ),
-                    shape = RoundedCornerShape(36.dp),
-                    maxLines = 1
-                )
 
-                OutlinedTextField(
-                    value = nomeBebeState.value,
-                    onValueChange = {
-                        nomeBebeState.value = it
-                    },
-                    label = {
-                        Text(text = "Nome do bebe")
-                    },
-                    leadingIcon = {
-                        Icon(imageVector = Icons.Default.Face,
-                            contentDescription = "",
-                            tint = Color(0xffFFAEBF),
-                        )
-                    },
-                    colors = OutlinedTextFieldDefaults
-                        .colors(
-                            focusedBorderColor = Color(0xffFFAEBF),
-                            unfocusedBorderColor = Color(0xffFFAEBF),
-                            focusedPlaceholderColor = Color(0x00FFAEBF),
-                            focusedContainerColor =  Color(0x2FFFAEBF),
-                        ),
-                    shape = RoundedCornerShape(36.dp),
-                    maxLines = 1
-                )
-
-                OutlinedTextField(
-                    value = semanasState.value,
-                    onValueChange = {
-                        semanasState.value = it
-                    },
-                    label = {
-                        Text(text = "Semanas de  gravidez")
-                    },
-                    leadingIcon = {
-                        Icon(imageVector = Icons.Default.Notifications,
-                            contentDescription = "",
-                            tint = Color(0xffFFAEBF),
-                        )
-                    },
                     colors = OutlinedTextFieldDefaults
                         .colors(
                             focusedBorderColor = Color(0xffFFAEBF),
                             unfocusedBorderColor = Color(0xffFFAEBF),
                         ),
                     shape = RoundedCornerShape(36.dp),
-                    maxLines = 1
+                    modifier = Modifier.width(280.dp),
+                            maxLines = 5
                 )
 
 
@@ -281,6 +222,14 @@ fun RegisterGestante(controleNavegacao: NavHostController) {
 
 
                 Button(onClick = {
+                    if (nomeState.value.isBlank() || sobrenomeState.value.isBlank() ||
+                        cpfState.value.isBlank() || profissaoState.value.isBlank() ||
+                        nascimentoState.value.isBlank()) {
+                        Toast.makeText(context, "Por favor, preencha todos os campos!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Cadastro concluido!", Toast.LENGTH_SHORT).show()
+                        // Navigate to next screen or perform registration
+                    }
 
                 },
                     shape = RoundedCornerShape(66.dp),
@@ -294,7 +243,7 @@ fun RegisterGestante(controleNavegacao: NavHostController) {
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceAround
                     ){
-                        Text(text = "Entrar",
+                        Text(text = "Próximo",
                             fontSize = 18.sp
                         )
 
@@ -315,6 +264,6 @@ fun RegisterGestante(controleNavegacao: NavHostController) {
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun RegisterGestantePreview() {
-    RegisterGestante(controleNavegacao = rememberNavController())
+fun RegisterDoulaPreview() {
+    RegisterDoula(controleNavegacao = rememberNavController())
 }

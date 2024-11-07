@@ -13,8 +13,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.senai.sp.jandira.lotus.screens.Login
 import br.senai.sp.jandira.lotus.screens.Register
-import br.senai.sp.jandira.lotus.screens.RegisterDoula
-import br.senai.sp.jandira.lotus.screens.RegisterGestante
+import br.senai.sp.jandira.lotus.screens.doula.HomeDoula
+import br.senai.sp.jandira.lotus.screens.doula.PerfilDoula
+import br.senai.sp.jandira.lotus.screens.doula.RegisterDoula
+import br.senai.sp.jandira.lotus.screens.gestante.AgendaGestante
+import br.senai.sp.jandira.lotus.screens.gestante.CheckListGestante
+import br.senai.sp.jandira.lotus.screens.gestante.HomeGestante
+import br.senai.sp.jandira.lotus.screens.gestante.HomeGestantePreview
+import br.senai.sp.jandira.lotus.screens.gestante.PerfilGestante
+import br.senai.sp.jandira.lotus.screens.gestante.RegisterGestante
 import br.senai.sp.jandira.lotus.ui.theme.LotusTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,8 +42,18 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable(route = "login") { Login(controleNavegacao) }
                         composable(route = "register") { Register(controleNavegacao) }
+
+                        //Doula
                         composable(route = "registerdoula") { RegisterDoula(controleNavegacao) }
+                        composable(route = "perfildoula") { PerfilDoula(controleNavegacao) }
+                        composable(route = "homedoula") { HomeDoula(controleNavegacao) }
+
+                        //Gestante
                         composable(route = "registergestante") { RegisterGestante(controleNavegacao) }
+                        composable(route = "perfilgestante") { PerfilGestante(controleNavegacao) }
+                        composable(route = "homegestante") { HomeGestante(controleNavegacao) }
+                        composable(route = "agendagestante") { AgendaGestante(controleNavegacao) }
+                        composable(route = "checklistgestante") { CheckListGestante(controleNavegacao) }
                     }
                 }
             }
